@@ -11,6 +11,7 @@ namespace Lab_Novichkova
     {
         protected const int carWidth = 90;
         protected const int carHeight = 50;
+
         public Bus(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;

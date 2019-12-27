@@ -27,7 +27,7 @@ namespace Lab_Novichkova
             MidBus = midBus;
             SecondBus = secondBus;
             Windows = windows;
-            Doors = doors;
+            Doors = doors;         
         }
        
         public override void DrawBus(Graphics g)
@@ -83,6 +83,11 @@ namespace Lab_Novichkova
                 g.FillRectangle(brBlue, _startPosX + 98, _startPosY + 5, 10, 35);
                 g.DrawRectangle(pen, _startPosX + 98, _startPosY + 5, 10, 35);
             }
+        }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }
