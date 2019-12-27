@@ -12,7 +12,7 @@ namespace Lab_Novichkova
 {
     public partial class FormBus : Form
     {
-        private DoubleBus bus;
+        private ITransport bus;
         public FormBus()
         {
             InitializeComponent();
@@ -46,6 +46,15 @@ namespace Lab_Novichkova
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            bus = new Bus(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black);
+            bus.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxBus.Width,
+           pictureBoxBus.Height);
+            Draw();
+        }
+
+        private void buttonCreateDouble_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             bus = new DoubleBus(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
