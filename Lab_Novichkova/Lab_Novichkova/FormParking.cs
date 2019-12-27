@@ -20,6 +20,7 @@ namespace Lab_Novichkova
            pictureBoxParking.Height);
             Draw();
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
@@ -27,6 +28,7 @@ namespace Lab_Novichkova
             parking.Draw(gr);
             pictureBoxParking.Image = bmp;
         }
+
         private void buttonSetBus_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -37,7 +39,8 @@ namespace Lab_Novichkova
                 Draw();
             }
         }
-        private void buttonSetBus2_Click(object sender, EventArgs e)
+
+        private void buttonSetDoubleBus_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -51,6 +54,7 @@ namespace Lab_Novichkova
                 }
             }
         }
+
         private void buttonTakeBus_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")

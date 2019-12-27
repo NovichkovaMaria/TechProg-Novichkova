@@ -67,7 +67,7 @@
             this.buttonSetBus2.TabIndex = 2;
             this.buttonSetBus2.Text = "Припарковать автобус с гармошкой";
             this.buttonSetBus2.UseVisualStyleBackColor = true;
-            this.buttonSetBus2.Click += new System.EventHandler(this.buttonSetBus2_Click);
+            this.buttonSetBus2.Click += new System.EventHandler(this.buttonSetDoubleBus_Click);
             // 
             // groupBox1
             // 
