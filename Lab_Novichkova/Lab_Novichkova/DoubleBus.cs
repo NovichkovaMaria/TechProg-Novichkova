@@ -15,6 +15,7 @@ namespace Lab_Novichkova
         public bool SecondBus { private set; get; }
         public bool Windows { private set; get; }
         public bool Doors { private set; get; }
+
         public DoubleBus(int maxSpeed, float weight, Color mainColor, Color dopColor,
          bool firstBus, bool midBus, bool secondBus, bool windows, bool doors) : base(maxSpeed, weight, mainColor)
         {
