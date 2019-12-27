@@ -63,11 +63,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Тип автобуса";
             // 
-            // labelDoubleBus
+            // labelBus2
             // 
             this.labelDoubleBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDoubleBus.Location = new System.Drawing.Point(27, 99);
-            this.labelDoubleBus.Name = "labelDoubleBus";
+            this.labelDoubleBus.Name = "labelBus2";
             this.labelDoubleBus.Size = new System.Drawing.Size(120, 47);
             this.labelDoubleBus.TabIndex = 1;
             this.labelDoubleBus.Text = "Автобус с гармошкой";

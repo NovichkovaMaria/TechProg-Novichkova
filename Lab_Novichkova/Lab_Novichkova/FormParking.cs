@@ -23,19 +23,19 @@ namespace Lab_Novichkova
            pictureBoxParking.Height);
             for (int i = 0; i < countLevel; i++)
             {
-                listBoxLevel.Items.Add("Уровень " + (i + 1));
+                listBox1.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevel.SelectedIndex = 0;
+            listBox1.SelectedIndex = 0;
         }
 
         private void Draw()
         {
-            if (listBoxLevel.SelectedIndex > -1)
+            if (listBox1.SelectedIndex > -1)
             {
                 Bitmap bmp = new Bitmap(pictureBoxParking.Width,
                pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBoxLevel.SelectedIndex].Draw(gr);
+                parking[listBox1.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
             }
         }
@@ -46,14 +46,14 @@ namespace Lab_Novichkova
             form.AddEvent(AddBus);
             form.Show();
         }
-        
+
         private void buttonTakeBus_Click(object sender, EventArgs e)
         {
-            if (listBoxLevel.SelectedIndex > -1)
+            if (listBox1.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var bus = parking[listBoxLevel.SelectedIndex] -
+                    var bus = parking[listBox1.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
                     if (bus != null)
                     {
@@ -76,16 +76,16 @@ namespace Lab_Novichkova
             }
         }
 
-        private void listBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
 
         private void AddBus(ITransport bus)
         {
-            if (bus != null && listBoxLevel.SelectedIndex > -1)
+            if (bus != null && listBox1.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevel.SelectedIndex] + bus;
+                int place = parking[listBox1.SelectedIndex] + bus;
                 if (place > -1)
                 {
                     Draw();
@@ -96,5 +96,39 @@ namespace Lab_Novichkova
                 }
             }
         }
-    }
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.LoadData(openFileDialog.FileName))
+                {
+
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+        }
+    }       
 }
