@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab_Novichkova
 {
-    interface ITransport
+    public interface ITransport
     {
         void SetPosition(int x, int y, int width, int height);
         void MoveBus(Direction direction);
