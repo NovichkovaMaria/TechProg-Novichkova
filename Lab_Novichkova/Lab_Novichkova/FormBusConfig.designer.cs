@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxBus = new System.Windows.Forms.GroupBox();
             this.labelDoubleBus = new System.Windows.Forms.Label();
             this.labelBus = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -46,28 +46,28 @@
             this.labelDopColor = new System.Windows.Forms.Label();
             this.labelBaseColor = new System.Windows.Forms.Label();
             this.pictureBoxBus = new System.Windows.Forms.PictureBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxBus.SuspendLayout();
             this.panelColor.SuspendLayout();
             this.panelBus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBus)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxBus
             // 
-            this.groupBox1.Controls.Add(this.labelDoubleBus);
-            this.groupBox1.Controls.Add(this.labelBus);
-            this.groupBox1.Location = new System.Drawing.Point(12, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 195);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Тип автобуса";
+            this.groupBoxBus.Controls.Add(this.labelDoubleBus);
+            this.groupBoxBus.Controls.Add(this.labelBus);
+            this.groupBoxBus.Location = new System.Drawing.Point(12, 22);
+            this.groupBoxBus.Name = "groupBoxBus";
+            this.groupBoxBus.Size = new System.Drawing.Size(200, 195);
+            this.groupBoxBus.TabIndex = 2;
+            this.groupBoxBus.TabStop = false;
+            this.groupBoxBus.Text = "Тип автобуса";
             // 
-            // labelBus2
+            // labelDoubleBus
             // 
             this.labelDoubleBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDoubleBus.Location = new System.Drawing.Point(27, 99);
-            this.labelDoubleBus.Name = "labelBus2";
+            this.labelDoubleBus.Name = "labelDoubleBus";
             this.labelDoubleBus.Size = new System.Drawing.Size(120, 47);
             this.labelDoubleBus.TabIndex = 1;
             this.labelDoubleBus.Text = "Автобус с гармошкой";
@@ -250,10 +250,10 @@
             this.Controls.Add(this.panelBus);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxBus);
             this.Name = "FormBusConfig";
             this.Text = "FormBusConfig";
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxBus.ResumeLayout(false);
             this.panelColor.ResumeLayout(false);
             this.panelBus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBus)).EndInit();
@@ -263,7 +263,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxBus;
         private System.Windows.Forms.Label labelDoubleBus;
         private System.Windows.Forms.Label labelBus;
         private System.Windows.Forms.Button buttonCancel;
