@@ -71,6 +71,9 @@
     <Compile Include="ITransport.cs" />
     <Compile Include="MultiLevelParking.cs" />
     <Compile Include="Parking.cs" />
+    <Compile Include="ParkingNotFoundException.cs" />
+    <Compile Include="ParkingOccupiedPlaceException.cs" />
+    <Compile Include="ParkingOverflowException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBus.resx">
@@ -91,6 +94,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,7 +106,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\arrow.png" />
