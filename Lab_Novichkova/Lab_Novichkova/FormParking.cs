@@ -23,19 +23,19 @@ namespace Lab_Novichkova
            pictureBoxParking.Height);
             for (int i = 0; i < countLevel; i++)
             {
-                listBox1.Items.Add("Уровень " + (i + 1));
+                listBoxLevel.Items.Add("Уровень " + (i + 1));
             }
-            listBox1.SelectedIndex = 0;
+            listBoxLevel.SelectedIndex = 0;
         }
 
         private void Draw()
         {
-            if (listBox1.SelectedIndex > -1)
+            if (listBoxLevel.SelectedIndex > -1)
             {
                 Bitmap bmp = new Bitmap(pictureBoxParking.Width,
                pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBox1.SelectedIndex].Draw(gr);
+                parking[listBoxLevel.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
             }
         }
@@ -49,11 +49,11 @@ namespace Lab_Novichkova
 
         private void buttonTakeBus_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex > -1)
+            if (listBoxLevel.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var bus = parking[listBox1.SelectedIndex] -
+                    var bus = parking[listBoxLevel.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
                     if (bus != null)
                     {
@@ -76,16 +76,16 @@ namespace Lab_Novichkova
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
 
         private void AddBus(ITransport bus)
         {
-            if (bus != null && listBox1.SelectedIndex > -1)
+            if (bus != null && listBoxLevel.SelectedIndex > -1)
             {
-                int place = parking[listBox1.SelectedIndex] + bus;
+                int place = parking[listBoxLevel.SelectedIndex] + bus;
                 if (place > -1)
                 {
                     Draw();
