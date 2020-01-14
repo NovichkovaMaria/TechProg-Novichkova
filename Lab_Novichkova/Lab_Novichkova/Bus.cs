@@ -9,8 +9,8 @@ namespace Lab_Novichkova
 {
     class Bus : AbstractBus
     {
-        protected const int carWidth = 90;
-        protected const int carHeight = 50;
+        protected const int busWidth = 90;
+        protected const int busHeight = 50;
 
         public Bus(int maxSpeed, float weight, Color mainColor)
         {
@@ -25,7 +25,7 @@ namespace Lab_Novichkova
             switch (direction)
             {
                 case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - carWidth)
+                    if (_startPosX + step < _pictureWidth - busWidth)
                     {
                         _startPosX += step;
                     }
@@ -43,7 +43,7 @@ namespace Lab_Novichkova
                     }
                     break;
                 case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - carHeight)
+                    if (_startPosY + step < _pictureHeight - busHeight)
 
                     {
                         _startPosY += step;
