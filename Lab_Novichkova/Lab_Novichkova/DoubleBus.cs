@@ -15,6 +15,9 @@ namespace Lab_Novichkova
         public bool SecondBus { private set; get; }
         public bool Windows { private set; get; }
         public bool Doors { private set; get; }
+        public DoorCount Count { private set; get; }
+        public int doorType { private set; get; }
+
         public DoubleBus(int maxSpeed, float weight, Color mainColor, Color dopColor,
          bool firstBus, bool midBus, bool secondBus, bool windows, bool doors) : base(maxSpeed, weight, mainColor)
         {
@@ -27,8 +30,31 @@ namespace Lab_Novichkova
             SecondBus = secondBus;
             Windows = windows;
             Doors = doors;
-        }
-       
+            switch (new Random().Next(3))
+            {
+                case 0:
+                    Count = DoorCount.THREE;
+                    break;
+                case 1:
+                    Count = DoorCount.FOUR;
+                    break;
+                case 2:
+                    Count = DoorCount.FIVE;
+                    break;
+            }
+            switch (new Random().Next(3))
+            {
+                case 0:
+                    doorType = 0;
+                    break;
+                case 1:
+                    doorType = 1;
+                    break;
+                case 2:
+                    doorType = 2;
+                    break;
+            }
+        }      
         public override void DrawBus(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -68,20 +94,23 @@ namespace Lab_Novichkova
                 g.DrawRectangle(pen, _startPosX + 70, _startPosY + 5, 18, 25);
                 g.DrawRectangle(pen, _startPosX + 108, _startPosY + 5, 17, 25);
             }
-            if (Doors)
+            IDoors doorClass;
+            switch (doorType)
             {
-                Brush brBlue = new SolidBrush(Color.LightBlue);
-                g.FillRectangle(brBlue, _startPosX - 5, _startPosY + 5, 10, 35);
-                g.DrawRectangle(pen, _startPosX - 5, _startPosY + 5, 10, 35);
-                g.FillRectangle(brBlue, _startPosX + 20, _startPosY + 5, 11, 35);
-                g.DrawRectangle(pen, _startPosX + 20, _startPosY + 5, 11, 35);
-                g.FillRectangle(brBlue, _startPosX + 32, _startPosY + 5, 11, 35);
-                g.DrawRectangle(pen, _startPosX + 32, _startPosY + 5, 11, 35);
-                g.FillRectangle(brBlue, _startPosX + 87, _startPosY + 5, 10, 35);
-                g.DrawRectangle(pen, _startPosX + 87, _startPosY + 5, 10, 35);
-                g.FillRectangle(brBlue, _startPosX + 98, _startPosY + 5, 10, 35);
-                g.DrawRectangle(pen, _startPosX + 98, _startPosY + 5, 10, 35);
+                case 0:
+                    doorClass = new DoorClassBlue(Count, MainColor, _startPosX, _startPosY);
+                    break;
+                case 1:
+                    doorClass = new DoorClassGreen(Count, MainColor, _startPosX, _startPosY);
+                    break;
+                case 2:
+                    doorClass = new DoorClassBlack(Count, MainColor, _startPosX, _startPosY);
+                    break;
+                default:
+                    doorClass = new DoorClassBlue(Count, MainColor, _startPosX, _startPosY);
+                    break;
             }
+            doorClass.DrawDoor(g);
         }
     }
 }
