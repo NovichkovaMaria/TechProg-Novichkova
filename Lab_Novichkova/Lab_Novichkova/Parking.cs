@@ -49,9 +49,9 @@ namespace Lab_Novichkova
         {
             if (!p.CheckFreePlace(index))
             {
-                T car = p._places[index];
+                T bus = p._places[index];
                 p._places.Remove(index);
-                return car;
+                return bus;
             }
             return null;
         }
