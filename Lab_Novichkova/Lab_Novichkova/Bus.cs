@@ -42,7 +42,6 @@ namespace Lab_Novichkova
                     break;
                 case Direction.Down:
                     if (_startPosY + step < _pictureHeight - busHeight)
-
                     {
                         _startPosY += step;
                     }

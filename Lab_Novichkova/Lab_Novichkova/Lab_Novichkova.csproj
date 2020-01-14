@@ -49,6 +49,10 @@
     <Compile Include="AbstractBus.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="DoorClassBlue.cs" />
+    <Compile Include="DoorClassGreen.cs" />
+    <Compile Include="DoorClassBlack.cs" />
+    <Compile Include="DoorCount.cs" />
     <Compile Include="DoubleBus.cs" />
     <Compile Include="FormBus.cs">
       <SubType>Form</SubType>
@@ -56,6 +60,7 @@
     <Compile Include="FormBus.designer.cs">
       <DependentUpon>FormBus.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDoors.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
