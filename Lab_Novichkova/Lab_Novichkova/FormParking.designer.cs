@@ -30,7 +30,7 @@
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.buttonSetBus = new System.Windows.Forms.Button();
-            this.buttonSetBus2 = new System.Windows.Forms.Button();
+            this.buttonSetDoubleBus = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.pictureBoxTakeBus = new System.Windows.Forms.PictureBox();
@@ -63,13 +63,13 @@
             // 
             // buttonSetBus2
             // 
-            this.buttonSetBus2.Location = new System.Drawing.Point(1133, 203);
-            this.buttonSetBus2.Name = "buttonSetBus2";
-            this.buttonSetBus2.Size = new System.Drawing.Size(165, 51);
-            this.buttonSetBus2.TabIndex = 2;
-            this.buttonSetBus2.Text = "Припарковать автобус с гармошкой";
-            this.buttonSetBus2.UseVisualStyleBackColor = true;
-            this.buttonSetBus2.Click += new System.EventHandler(this.buttonSetDoubleBus_Click);
+            this.buttonSetDoubleBus.Location = new System.Drawing.Point(1133, 203);
+            this.buttonSetDoubleBus.Name = "buttonSetBus2";
+            this.buttonSetDoubleBus.Size = new System.Drawing.Size(165, 51);
+            this.buttonSetDoubleBus.TabIndex = 2;
+            this.buttonSetDoubleBus.Text = "Припарковать автобус с гармошкой";
+            this.buttonSetDoubleBus.UseVisualStyleBackColor = true;
+            this.buttonSetDoubleBus.Click += new System.EventHandler(this.buttonSetDoubleBus_Click);
             // 
             // groupBox1
             // 
@@ -145,7 +145,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxLevel);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonSetBus2);
+            this.Controls.Add(this.buttonSetDoubleBus);
             this.Controls.Add(this.buttonSetBus);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
@@ -163,7 +163,7 @@
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
         private System.Windows.Forms.Button buttonSetBus;
-        private System.Windows.Forms.Button buttonSetBus2;
+        private System.Windows.Forms.Button buttonSetDoubleBus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTakeBus;
         private System.Windows.Forms.PictureBox pictureBoxTakeBus;

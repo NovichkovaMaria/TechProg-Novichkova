@@ -68,9 +68,9 @@ namespace Lab_Novichkova
                     ColorDialog dialogDop = new ColorDialog();
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
-                        var car = new DoubleBus(100, 1000, dialog.Color,
+                        var bus = new DoubleBus(100, 1000, dialog.Color,
                        dialogDop.Color, true, true, true, true, true);
-                        int place = parking[listBoxLevel.SelectedIndex] + car;
+                        int place = parking[listBoxLevel.SelectedIndex] + bus;
                         if (place == -1)
                         {
                             MessageBox.Show("Нет свободных мест", "Ошибка",
@@ -88,16 +88,16 @@ namespace Lab_Novichkova
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevel.SelectedIndex] -
+                    var bus = parking[listBoxLevel.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    if (bus != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeBus.Width,
                        pictureBoxTakeBus.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeBus.Width,
+                        bus.SetPosition(5, 5, pictureBoxTakeBus.Width,
                        pictureBoxTakeBus.Height);
-                        car.DrawBus(gr);
+                        bus.DrawBus(gr);
                         pictureBoxTakeBus.Image = bmp;
                     }
                     else
