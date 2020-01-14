@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Lab_Novichkova
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T, A>
+         where T : class, ITransport
+         where A : class, ITransport
     {
         private T[] _places;
+        private A[] _bus;
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
         private const int _placeSizeWidth = 210;
@@ -24,7 +27,7 @@ namespace Lab_Novichkova
                 _places[i] = null;
             }
         }
-        public static int operator +(Parking<T> p, T bus)
+        public static int operator +(Parking<T, A> p, T bus)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
@@ -39,7 +42,7 @@ namespace Lab_Novichkova
             }
             return -1;
         }
-        public static T operator -(Parking<T> p, int index)
+        public static T operator -(Parking<T, A> p, int index)
         {
             if (index < 0 || index > p._places.Length)
             {
@@ -52,6 +55,34 @@ namespace Lab_Novichkova
                 return bus;
             }
             return null;
+        }
+        public static bool operator <=(Parking<T, A> p, int countPlace)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            if (freePlaces <= countPlace)
+                return true;
+            return false;
+        }
+        public static bool operator >=(Parking<T, A> p, int countPlace)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            if (freePlaces >= countPlace)
+                return true;
+            return false;
         }
         private bool CheckFreePlace(int index)
         {
