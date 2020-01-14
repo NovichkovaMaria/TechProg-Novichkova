@@ -32,10 +32,12 @@
             this.buttonSetBus = new System.Windows.Forms.Button();
             this.buttonSetDoubleBus = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonCompare = new System.Windows.Forms.Button();
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.pictureBoxTakeBus = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelPlace = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeBus)).BeginInit();
@@ -71,22 +73,34 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelPlace);
+            this.groupBox1.Controls.Add(this.buttonCompare);
             this.groupBox1.Controls.Add(this.buttonTakeBus);
             this.groupBox1.Controls.Add(this.pictureBoxTakeBus);
             this.groupBox1.Controls.Add(this.maskedTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1092, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(249, 375);
+            this.groupBox1.Size = new System.Drawing.Size(249, 463);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Забрать автобус";
             // 
+            // buttonCompare
+            // 
+            this.buttonCompare.Location = new System.Drawing.Point(111, 60);
+            this.buttonCompare.Name = "buttonCompare";
+            this.buttonCompare.Size = new System.Drawing.Size(131, 40);
+            this.buttonCompare.TabIndex = 6;
+            this.buttonCompare.Text = "Проверить места";
+            this.buttonCompare.UseVisualStyleBackColor = true;
+            this.buttonCompare.Click += new System.EventHandler(this.buttonCompare_Click);
+            // 
             // buttonTakeBus
             // 
-            this.buttonTakeBus.Location = new System.Drawing.Point(41, 60);
+            this.buttonTakeBus.Location = new System.Drawing.Point(6, 60);
             this.buttonTakeBus.Name = "buttonTakeBus";
-            this.buttonTakeBus.Size = new System.Drawing.Size(99, 26);
+            this.buttonTakeBus.Size = new System.Drawing.Size(99, 40);
             this.buttonTakeBus.TabIndex = 3;
             this.buttonTakeBus.Text = "Забрать";
             this.buttonTakeBus.UseVisualStyleBackColor = true;
@@ -94,7 +108,7 @@
             // 
             // pictureBoxTakeBus
             // 
-            this.pictureBoxTakeBus.Location = new System.Drawing.Point(13, 92);
+            this.pictureBoxTakeBus.Location = new System.Drawing.Point(12, 185);
             this.pictureBoxTakeBus.Name = "pictureBoxTakeBus";
             this.pictureBoxTakeBus.Size = new System.Drawing.Size(230, 210);
             this.pictureBoxTakeBus.TabIndex = 2;
@@ -115,6 +129,13 @@
             this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Место";
+            // 
+            // labelPlace
+            // 
+            this.labelPlace.Location = new System.Drawing.Point(10, 127);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(233, 27);
+            this.labelPlace.TabIndex = 7;
             // 
             // FormParking
             // 
@@ -145,5 +166,7 @@
         private System.Windows.Forms.PictureBox pictureBoxTakeBus;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonCompare;
+        private System.Windows.Forms.Label labelPlace;
     }
 }

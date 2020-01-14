@@ -12,11 +12,11 @@ namespace Lab_Novichkova
 {
     public partial class FormParking : Form
     {
-        Parking<ITransport> parking;
+        Parking<ITransport, ITransport> parking;
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(20, pictureBoxParking.Width,
+            parking = new Parking<ITransport, ITransport>(20, pictureBoxParking.Width,
            pictureBoxParking.Height);
             Draw();
         }
@@ -76,6 +76,27 @@ namespace Lab_Novichkova
                     pictureBoxTakeBus.Image = bmp;
                 }
                 Draw();
+            }
+        }
+        private void buttonCompare_Click(object sender, EventArgs e)
+        {
+            if (maskedTextBox.Text != "")
+            {
+                if (parking <= Convert.ToInt32(maskedTextBox.Text))
+                {
+                    if (parking >= Convert.ToInt32(maskedTextBox.Text))
+                    {
+                        labelPlace.Text = "Свободных мест равно " + maskedTextBox.Text;
+                    }
+                    else
+                    {
+                        labelPlace.Text = "Свободных мест меньше " + maskedTextBox.Text;
+                    }
+                }
+                else
+                {
+                    labelPlace.Text = "Свободных мест больше " + maskedTextBox.Text;
+                }
             }
         }
     }
