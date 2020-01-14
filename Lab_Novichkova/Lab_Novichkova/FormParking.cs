@@ -26,19 +26,19 @@ namespace Lab_Novichkova
            pictureBoxParking.Height);
             for (int i = 0; i < countLevel; i++)
             {
-                listBoxLevels.Items.Add("Уровень " + (i + 1));
+                listBoxLevel.Items.Add("Уровень " + (i + 1));
             }
-            listBoxLevels.SelectedIndex = 0;
+            listBoxLevel.SelectedIndex = 0;
         }
 
         private void Draw()
         {
-            if (listBoxLevels.SelectedIndex > -1)
+            if (listBoxLevel.SelectedIndex > -1)
             {
                 Bitmap bmp = new Bitmap(pictureBoxParking.Width,
                pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBoxLevels.SelectedIndex].Draw(gr);
+                parking[listBoxLevel.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
             }
         }
@@ -52,13 +52,13 @@ namespace Lab_Novichkova
 
         private void buttonTakeBus_Click(object sender, EventArgs e)
         {
-            if (listBoxLevels.SelectedIndex > -1)
+            if (listBoxLevel.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
                 {
                     try
                     {
-                        var bus = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
+                        var bus = parking[listBoxLevel.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeBus.Width,
                        pictureBoxTakeBus.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -88,18 +88,18 @@ namespace Lab_Novichkova
             }
         }
 
-        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
 
         private void AddBus(ITransport bus)
         {
-            if (bus != null && listBoxLevels.SelectedIndex > -1)
+            if (bus != null && listBoxLevel.SelectedIndex > -1)
             {
                 try
                 {
-                    int place = parking[listBoxLevels.SelectedIndex] + bus;
+                    int place = parking[listBoxLevel.SelectedIndex] + bus;
                     logger.Info("Добавлен автомобиль " + bus.ToString() + " на место "
                    + place);
                     Draw();
