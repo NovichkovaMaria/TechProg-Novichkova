@@ -35,7 +35,7 @@
             this.pictureBoxTakeBus = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxLevel = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -116,13 +116,13 @@
             // 
             // listBox1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(1110, 31);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(209, 116);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxLevel.FormattingEnabled = true;
+            this.listBoxLevel.ItemHeight = 16;
+            this.listBoxLevel.Location = new System.Drawing.Point(1110, 31);
+            this.listBoxLevel.Name = "listBox1";
+            this.listBoxLevel.Size = new System.Drawing.Size(209, 116);
+            this.listBoxLevel.TabIndex = 4;
+            this.listBoxLevel.SelectedIndexChanged += new System.EventHandler(this.listBoxLevel_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -182,7 +182,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1361, 676);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxLevel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetBus);
             this.Controls.Add(this.pictureBoxParking);
@@ -210,7 +210,7 @@
         private System.Windows.Forms.PictureBox pictureBoxTakeBus;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxLevel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
