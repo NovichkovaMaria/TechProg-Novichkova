@@ -15,6 +15,7 @@ namespace Lab_Novichkova
         private int PictureHeight { get; set; }
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
+        HashSet<T> busHash = new HashSet<T>();
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
@@ -83,6 +84,10 @@ namespace Lab_Novichkova
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
+        }
+        public T GetTransportByKey(int key)
+        {
+            return _places.ContainsKey(key) ? _places[key] : null;
         }
     }
 }
