@@ -61,10 +61,10 @@
             this.buttonSetBus.UseVisualStyleBackColor = true;
             this.buttonSetBus.Click += new System.EventHandler(this.buttonSetBus_Click);
             // 
-            // buttonSetBus2
+            // buttonSetDoubleBus
             // 
-            this.buttonSetDoubleBus.Location = new System.Drawing.Point(1133, 203);
-            this.buttonSetDoubleBus.Name = "buttonSetBus2";
+            this.buttonSetDoubleBus.Location = new System.Drawing.Point(1128, 81);
+            this.buttonSetDoubleBus.Name = "buttonSetDoubleBus";
             this.buttonSetDoubleBus.Size = new System.Drawing.Size(165, 51);
             this.buttonSetDoubleBus.TabIndex = 2;
             this.buttonSetDoubleBus.Text = "Припарковать автобус с гармошкой";
