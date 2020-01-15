@@ -24,7 +24,6 @@ namespace Lab_Novichkova
             PictureHeight = pictureHeight;
 
         }
-
         public static int operator +(Parking<T> p, T bus)
         {
             if (p._places.Count == p._maxCount)

@@ -46,7 +46,7 @@ namespace Lab_Novichkova
             form.AddEvent(AddBus);
             form.Show();
         }
-        
+
         private void buttonTakeBus_Click(object sender, EventArgs e)
         {
             if (listBoxLevel.SelectedIndex > -1)
