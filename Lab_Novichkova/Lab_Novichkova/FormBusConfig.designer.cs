@@ -52,12 +52,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBus)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxBus
             // 
             this.groupBoxBus.Controls.Add(this.labelDoubleBus);
             this.groupBoxBus.Controls.Add(this.labelBus);
             this.groupBoxBus.Location = new System.Drawing.Point(12, 22);
-            this.groupBoxBus.Name = "groupBox1";
+            this.groupBoxBus.Name = "groupBoxBus";
+
             this.groupBoxBus.Size = new System.Drawing.Size(200, 195);
             this.groupBoxBus.TabIndex = 2;
             this.groupBoxBus.TabStop = false;
