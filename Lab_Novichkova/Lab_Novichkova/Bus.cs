@@ -17,6 +17,7 @@ namespace Lab_Novichkova
             Weight = weight;
             MainColor = mainColor;
         }
+
         public override void MoveBus(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -49,6 +50,7 @@ namespace Lab_Novichkova
                     break;
             }
         }
+
         public override void DrawBus(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
