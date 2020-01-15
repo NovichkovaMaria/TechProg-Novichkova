@@ -30,7 +30,6 @@
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.buttonSetBus = new System.Windows.Forms.Button();
-            this.buttonSetDoubleBus = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.pictureBoxTakeBus = new System.Windows.Forms.PictureBox();
@@ -53,23 +52,13 @@
             // 
             // buttonSetBus
             // 
-            this.buttonSetBus.Location = new System.Drawing.Point(1133, 137);
+            this.buttonSetBus.Location = new System.Drawing.Point(1116, 187);
             this.buttonSetBus.Name = "buttonSetBus";
             this.buttonSetBus.Size = new System.Drawing.Size(165, 44);
             this.buttonSetBus.TabIndex = 1;
             this.buttonSetBus.Text = "Припарковать автобус";
             this.buttonSetBus.UseVisualStyleBackColor = true;
             this.buttonSetBus.Click += new System.EventHandler(this.buttonSetBus_Click);
-            // 
-            // buttonSetDoubleBus
-            // 
-            this.buttonSetDoubleBus.Location = new System.Drawing.Point(1128, 81);
-            this.buttonSetDoubleBus.Name = "buttonSetDoubleBus";
-            this.buttonSetDoubleBus.Size = new System.Drawing.Size(165, 51);
-            this.buttonSetDoubleBus.TabIndex = 2;
-            this.buttonSetDoubleBus.Text = "Припарковать автобус с гармошкой";
-            this.buttonSetDoubleBus.UseVisualStyleBackColor = true;
-            this.buttonSetDoubleBus.Click += new System.EventHandler(this.buttonSetDoubleBus_Click);
             // 
             // groupBox1
             // 
@@ -118,13 +107,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Место";
             // 
-            // listBoxLevel
+            // listBox1
             // 
             this.listBoxLevel.FormattingEnabled = true;
             this.listBoxLevel.ItemHeight = 16;
             this.listBoxLevel.Location = new System.Drawing.Point(1110, 31);
-            this.listBoxLevel.Name = "listBoxLevel";
-            this.listBoxLevel.Size = new System.Drawing.Size(209, 100);
+            this.listBoxLevel.Name = "listBox1";
+            this.listBoxLevel.Size = new System.Drawing.Size(209, 116);
             this.listBoxLevel.TabIndex = 4;
             this.listBoxLevel.SelectedIndexChanged += new System.EventHandler(this.listBoxLevel_SelectedIndexChanged);
             // 
@@ -145,7 +134,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxLevel);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonSetDoubleBus);
             this.Controls.Add(this.buttonSetBus);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
@@ -163,7 +151,6 @@
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
         private System.Windows.Forms.Button buttonSetBus;
-        private System.Windows.Forms.Button buttonSetDoubleBus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonTakeBus;
         private System.Windows.Forms.PictureBox pictureBoxTakeBus;

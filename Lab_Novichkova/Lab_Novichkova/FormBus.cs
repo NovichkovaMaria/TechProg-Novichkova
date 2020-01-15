@@ -13,11 +13,11 @@ namespace Lab_Novichkova
     public partial class FormBus : Form
     {
         private ITransport bus;
+
         public FormBus()
         {
             InitializeComponent();
         }
-
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxBus.Width, pictureBoxBus.Height);

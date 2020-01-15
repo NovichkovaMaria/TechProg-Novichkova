@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace Lab_Novichkova
 {
+    public delegate void busDelegate(ITransport bus);
+
     static class Program
     {
         /// <summary>

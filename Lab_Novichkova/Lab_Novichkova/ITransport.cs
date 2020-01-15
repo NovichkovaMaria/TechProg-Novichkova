@@ -12,5 +12,6 @@ namespace Lab_Novichkova
         void SetPosition(int x, int y, int width, int height);
         void MoveBus(Direction direction);
         void DrawBus(Graphics g);
+        void SetMainColor(Color color);
     }
 }
