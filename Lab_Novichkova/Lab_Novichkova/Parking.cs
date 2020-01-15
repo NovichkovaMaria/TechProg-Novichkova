@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Lab_Novichkova
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>>
+ where T : class, ITransport
     {
         private Dictionary<int, T> _places;
         private int _maxCount;
@@ -15,6 +17,14 @@ namespace Lab_Novichkova
         private int PictureHeight { get; set; }
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
+
+        private int _currentIndex;        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
@@ -29,7 +39,11 @@ namespace Lab_Novichkova
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
+            }
+            if (p._places.ContainsValue(bus))
+            {
+                throw new ParkingAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -53,13 +67,13 @@ namespace Lab_Novichkova
                 p._places.Remove(index);
                 return bus;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
-
         private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
+
 
         public void Draw(Graphics g)
         {
@@ -104,7 +118,91 @@ namespace Lab_Novichkova
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
                 }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }
             }
+        }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        public void Dispose()
+        {
+            _places.Clear();
+        }        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }        public void Reset()
+        {
+            _currentIndex = -1;
+        }        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Bus && other._places[thisKeys[i]] is
+                   DoubleBus)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is DoubleBus && other._places[thisKeys[i]]
+                    is Bus)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Bus && other._places[thisKeys[i]] is
+                    Bus)
+                    {
+                        return (_places[thisKeys[i]] is
+                       Bus).CompareTo(other._places[thisKeys[i]] is Bus);
+                    }
+                    if (_places[thisKeys[i]] is DoubleBus && other._places[thisKeys[i]]
+                    is DoubleBus)
+                    {
+                        return (_places[thisKeys[i]] is DoubleBus).CompareTo(other._places[thisKeys[i]] is DoubleBus);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }
+
