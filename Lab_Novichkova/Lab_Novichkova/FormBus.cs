@@ -17,6 +17,7 @@ namespace Lab_Novichkova
         {
             InitializeComponent();
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxBus.Width, pictureBoxBus.Height);
@@ -24,6 +25,7 @@ namespace Lab_Novichkova
             bus.DrawBus(gr);
             pictureBoxBus.Image = bmp;
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             string name = (sender as Button).Name;
