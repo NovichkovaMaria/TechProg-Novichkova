@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,12 @@ namespace Lab_Novichkova
         MultiLevelParking parking;
         FormBusConfig form;
         private const int countLevel = 5;
+        private Logger logger;
 
         public FormParking()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
             for (int i = 0; i < countLevel; i++)
@@ -53,10 +56,9 @@ namespace Lab_Novichkova
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var bus = parking[listBoxLevel.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
-                    if (bus != null)
+                    try
                     {
+                        var bus = parking[listBoxLevel.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeBus.Width,
                        pictureBoxTakeBus.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -64,14 +66,24 @@ namespace Lab_Novichkova
                        pictureBoxTakeBus.Height);
                         bus.DrawBus(gr);
                         pictureBoxTakeBus.Image = bmp;
+                        logger.Info("Изъят автобус " + bus.ToString() + " с места " + maskedTextBox.Text);
+                        Draw();
                     }
-                    else
+                    catch (ParkingNotFoundException ex)
                     {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeBus.Width,
                        pictureBoxTakeBus.Height);
                         pictureBoxTakeBus.Image = bmp;
+                        logger.Error("Ошибка. Нельзя убрать автобус, все места заняты.");
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Error("Ошибка. Нельзя убрать автобус");
+                    }
                 }
             }
         }
@@ -85,14 +97,24 @@ namespace Lab_Novichkova
         {
             if (bus != null && listBoxLevel.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevel.SelectedIndex] + bus;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxLevel.SelectedIndex] + bus;
+                    logger.Info("Добавлен автомобиль " + bus.ToString() + " на место "
+                   + place);
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Автобус не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    logger.Error("Ошибка. Переполнение");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка при добавлении");
                 }
             }
         }
@@ -100,15 +122,18 @@ namespace Lab_Novichkova
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    parking.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка при сохранении");
                 }
             }
         }
@@ -117,15 +142,24 @@ namespace Lab_Novichkova
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog.FileName))
+                try
                 {
-
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    parking.LoadData(openFileDialog.FileName);
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Error("Ошибка при загрузке");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка при сохранении");
                 }
                 Draw();
             }
