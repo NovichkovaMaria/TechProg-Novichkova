@@ -35,7 +35,7 @@ namespace Lab_Novichkova
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -49,31 +49,33 @@ namespace Lab_Novichkova
                     sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var bus = level[i];
-                        if (bus != null)
+                        try
                         {
-                            if (bus.GetType().Name == "Bus")
+                            var bus = level[i];
+                            if (bus != null)
                             {
-                                sw.Write(i + ":Bus:");
+                                if (bus.GetType().Name == "Bus")
+                                {
+                                    sw.Write(i + ":Bus:");
+                                }
+                                if (bus.GetType().Name == "DoubleBus")
+                                {
+                                    sw.Write(i + ":DoubleBus:");
+                                }
+                                sw.WriteLine(bus);
                             }
-                            if (bus.GetType().Name == "DoubleBus")
-                            {
-                                sw.Write(i + ":DoubleBus:");
-                            }
-                            sw.WriteLine(bus);
                         }
+                        finally { }
                     }
                 }
-
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             int counter = -1;
             ITransport bus = null;
@@ -92,7 +94,7 @@ namespace Lab_Novichkova
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
 
                 while ((str = sr.ReadLine()) != null)
@@ -122,8 +124,11 @@ namespace Lab_Novichkova
                         parkingStages[counter][Convert.ToInt32(splitStr[0])] = bus;
                     }
                 }
-                return true;
             }
+        }
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }
