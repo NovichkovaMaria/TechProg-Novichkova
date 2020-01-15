@@ -7,33 +7,16 @@ using System.Drawing;
 
 namespace Lab_Novichkova
 {
-    class DoubleBus
+    class DoubleBus : Bus
     {
-        protected float _startPosX;
-        protected float _startPosY;
-        protected int _pictureWidth;
-        protected int _pictureHeight;
-        private const int busWidth = 100;
-        private const int busHeight = 60;
         public Color DopColor { private set; get; }
         public bool FirstBus { private set; get; }
         public bool MidBus { private set; get; }
         public bool SecondBus { private set; get; }
         public bool Windows { private set; get; }
         public bool Doors { private set; get; }
-        public int MaxSpeed { protected set; get; }
-        public float Weight { protected set; get; }
-        public Color MainColor { protected set; get; }
-
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
         public DoubleBus(int maxSpeed, float weight, Color mainColor, Color dopColor,
-         bool firstBus, bool midBus, bool secondBus, bool windows, bool doors)
+         bool firstBus, bool midBus, bool secondBus, bool windows, bool doors) : base(maxSpeed, weight, mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -45,38 +28,8 @@ namespace Lab_Novichkova
             Windows = windows;
             Doors = doors;
         }
-        public void MoveBus(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - busWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - busHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
-            }
-        }
-        public void DrawBus(Graphics g)
+       
+        public override void DrawBus(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
             if (FirstBus)
@@ -128,7 +81,7 @@ namespace Lab_Novichkova
                 g.DrawRectangle(pen, _startPosX + 87, _startPosY + 5, 10, 35);
                 g.FillRectangle(brBlue, _startPosX + 98, _startPosY + 5, 10, 35);
                 g.DrawRectangle(pen, _startPosX + 98, _startPosY + 5, 10, 35);
-            }      
+            }
         }
     }
 }
