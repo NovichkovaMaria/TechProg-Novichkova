@@ -58,16 +58,17 @@
             this.groupBoxBus.Controls.Add(this.labelBus);
             this.groupBoxBus.Location = new System.Drawing.Point(12, 22);
             this.groupBoxBus.Name = "groupBoxBus";
+
             this.groupBoxBus.Size = new System.Drawing.Size(200, 195);
             this.groupBoxBus.TabIndex = 2;
             this.groupBoxBus.TabStop = false;
             this.groupBoxBus.Text = "Тип автобуса";
             // 
-            // labelDoubleBus
+            // labelBus2
             // 
             this.labelDoubleBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDoubleBus.Location = new System.Drawing.Point(27, 99);
-            this.labelDoubleBus.Name = "labelDoubleBus";
+            this.labelDoubleBus.Name = "labelBus2";
             this.labelDoubleBus.Size = new System.Drawing.Size(120, 47);
             this.labelDoubleBus.TabIndex = 1;
             this.labelDoubleBus.Text = "Автобус с гармошкой";

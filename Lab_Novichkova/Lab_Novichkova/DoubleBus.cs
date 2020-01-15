@@ -29,7 +29,24 @@ namespace Lab_Novichkova
             Windows = windows;
             Doors = doors;         
         }
-       
+
+        public DoubleBus(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 9)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                FirstBus = Convert.ToBoolean(strs[4]);
+                MidBus = Convert.ToBoolean(strs[5]);
+                SecondBus = Convert.ToBoolean(strs[6]);
+                Windows = Convert.ToBoolean(strs[7]);
+                Doors = Convert.ToBoolean(strs[8]);
+            }
+        }
+
         public override void DrawBus(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -88,6 +105,12 @@ namespace Lab_Novichkova
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + FirstBus + ";" +
+           MidBus + ";" + SecondBus + ";" + Windows + ";" + Doors;
         }
     }
 }
